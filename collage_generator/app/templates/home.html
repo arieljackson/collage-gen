@@ -1,8 +1,23 @@
-# home.html
-<h1>Enter URL:</h1>
-<form action="/get_screenshot/" method="post">
-  {% csrf_token %}
-  <input type="url" name="url" size="50" placeholder="Ex. https://www.netflix.com" required>
+{% load staticfiles %}
 
-  <input type="submit" value="Generate screenshot">
-</form>
+{% if screenshot %}
+
+
+{% else %}
+  <body>
+  <div class="box">
+  <div class="container-1">
+  <div align=”center”>
+  <h1>Enter URL:</h1>
+  <form action="/get_screenshot/" method="post">
+    {% csrf_token %}
+    <input type="url" name="url" size="50" placeholder="Ex. https://www.netflix.com" required>
+
+    <input type="submit" value="Go">
+  </form>
+  </div>
+  </div>
+
+  <img src="{{ MEDIA_URL }}{{ collage }}">
+
+{% endif %}
